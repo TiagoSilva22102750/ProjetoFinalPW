@@ -4,7 +4,8 @@
 
 {% block main %}
 <h1>Quizz</h1>
-<form method="POST" action="mailto: seuemail@gmail.com" enctype="multipart/form-data" autocomplete="on">
+<form method="POST" enctype="multipart/form-data" autocomplete="on">
+    {% csrf_token %}
     <br>
     <p>Nome: <input type="text" name="nome" pattern=".{3,}" maxlength="15" autofocus required></p>
 
@@ -13,14 +14,14 @@
     <h3>Perguntas</h3>
     <br>
     <p><b>Quais destas são linguagens frontend?</b></p>
-    <p><input type="checkbox" id="ling1" name="linguagem" value="java"> JAVA</p>
-    <p><input type="checkbox" id="ling2" name="linguagem" value="css"> CSS</p>
-    <p><input type="checkbox" id="ling3" name="linguagem" value="django"> Django</p>
-    <p><input type="checkbox" id="ling4" name="linguagem" value="html"> HTML</p>
-    <p><input type="checkbox" id="ling5" name="linguagem" value="javascript"> JavaScript</p>
-    <p><input type="checkbox" id="ling6" name="linguagem" value="kotlin"> Kotlin</p>
-    <p><input type="checkbox" id="ling7" name="linguagem" value="C#"> C#</p>
-    <p><input type="checkbox" id="ling8" name="linguagem" value="Python"> Python</p>
+    <p><input type="checkbox" id="ling1" name="linguagem[]" value="java"> JAVA</p>
+    <p><input type="checkbox" id="ling2" name="linguagem[]" value="css"> CSS</p>
+    <p><input type="checkbox" id="ling3" name="linguagem[]" value="django"> Django</p>
+    <p><input type="checkbox" id="ling4" name="linguagem[]" value="html"> HTML</p>
+    <p><input type="checkbox" id="ling5" name="linguagem[]" value="javascript"> JavaScript</p>
+    <p><input type="checkbox" id="ling6" name="linguagem[]" value="kotlin"> Kotlin</p>
+    <p><input type="checkbox" id="ling7" name="linguagem[]" value="C#"> C#</p>
+    <p><input type="checkbox" id="ling8" name="linguagem[]" value="Python"> Python</p>
 
     <br>
 

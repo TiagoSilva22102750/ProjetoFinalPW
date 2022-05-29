@@ -1,3 +1,5 @@
+import collections
+
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -75,21 +77,22 @@ def quizz_page_view(request):
         n = request.POST['nome']
         p: int = 0
 
-        if (request.POST["linguagem"] == "css" and request.POST["linguagem"] == "html" and request.POST["linguagem"] == "javascript"):
+        if (collections.Counter(request.POST.getlist("linguagem")) == collections.Counter(("css", "html", "javascript"))):
             p = p + 1
+
 
         if (request.POST["opcao"] == "img"):
-            p = p + 1
+           p = p + 1
 
-        if (request.POST["datecriacao"] == "21/07/2005"):
+        if (request.POST["datecriacao"] == "21-07-2005"):
             p = p + 1
 
 
         if(request.POST["pagecolor"] == "rgb(255, 255, 255)"):
             p = p + 1
 
-        if (request.POST["launchYear"] == "1993"):
-            p = p + 1
+        if (request.POST["launchYear"] == 1993):
+           p = p + 1
 
         r = PontuacaoQuizz(nome=n, pontuacao=p)
         r.save()
