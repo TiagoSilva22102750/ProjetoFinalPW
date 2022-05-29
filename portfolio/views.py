@@ -8,13 +8,10 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 from django.urls import reverse
-import matplotlib
 from matplotlib import pyplot as plt
 
 from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
     PontuacaoQuizz, resolution_path, BlogPost
-
-matplotlib.use('TkAgg')
 
 
 def home_page_view(request):
