@@ -19,16 +19,27 @@
         <p><b>Ano de Realização: </b>{{projeto.anoLetivoEmQueFoiRealizado}}</p>
 
         {% for participantes in projeto.autores %}
-            <p><b>Participantes: </b>{{participantes}}</p>
+        <p><b>Participantes: </b>{{participantes}}</p>
         {% endfor %}
 
-        <p><b>Link do GitHub: </b><a href= "{{projeto.linkGitHub}}">{{projeto.linkGitHub}}</a></p>
-        <p><b>Vídeo de Demonstração: </b><a href= "{{projeto.linkVideoYoutube}}">{{projeto.linkVideoYoutube}}</a></p>
+        <p><b>Link do GitHub: </b><a href="{{projeto.linkGitHub}}">{{projeto.linkGitHub}}</a></p>
+        <p><b>Vídeo de Demonstração: </b><a href="{{projeto.linkVideoYoutube}}">{{projeto.linkVideoYoutube}}</a></p>
 
         {% for linguagensUsadas in projeto.linguagemUsada %}
-            <p><b>Linguagem Utilizada:</b> {{linguagensUsadas}}</p>
+        <p><b>Linguagem Utilizada:</b> {{linguagensUsadas}}</p>
         {% endfor %}
+        <br>
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:edita_projeto' projeto.id %}">Editar</a>
+        </button>
+        {% endif %}
     </div>
 </div>
 {% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:novo_projeto' %}">Adicionar projeto</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}

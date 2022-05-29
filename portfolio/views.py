@@ -1,6 +1,7 @@
 import collections
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -10,6 +11,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from matplotlib import pyplot as plt
 
+from portfolio.forms import CadeiraForm, ProjetoForm, TecnologiaForm, NoticiaForm, LaboratorioForm, InteresseForm, \
+    EscolaForm, BlogPostForm
 from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
     PontuacaoQuizz, resolution_path, BlogPost
 
@@ -139,6 +142,251 @@ def tfcs_page_view(request):
     return render(request, 'portfolio/tfcs.html')
 
 
+@login_required
+def licenciatura_nova_cadeira_view(request):
+    form = CadeiraForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:licenciatura'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novacadeira.html', context)
+
+
+@login_required
+def licenciatura_edita_cadeira_view(request, cadeira_id):
+    cadeira = Cadeira.objects.get(pk=cadeira_id)
+    form = CadeiraForm(request.POST or None, instance=cadeira)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:licenciatura'))
+
+    context = {'form': form, 'cadeira_id': cadeira_id}
+
+    return render(request, 'portfolio/editacadeira.html', context)
+
+
+@login_required
+def licenciatura_apaga_cadeira_view(request, cadeira_id):
+    Cadeira.objects.get(pk=cadeira_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:licenciatura'))
+
+
+@login_required
+def novo_projeto_view(request):
+    form = ProjetoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:projetos'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novoprojeto.html', context)
+
+
+@login_required
+def edita_projeto_view(request, projeto_id):
+    projeto = Projeto.objects.get(pk=projeto_id)
+    form = ProjetoForm(request.POST or None, instance=projeto)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:projetos'))
+
+    context = {'form': form, 'projeto_id': projeto_id}
+
+    return render(request, 'portfolio/editaprojeto.html', context)
+
+
+@login_required
+def apaga_projeto_view(request, projeto_id):
+    Projeto.objects.get(pk=projeto_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:projetos'))
+
+
+@login_required
+def nova_tecnologia_view(request):
+    form = TecnologiaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:programacaowebtecnologias'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novatecnologia.html', context)
+
+
+@login_required
+def edita_tecnologia_view(request, tecnologia_id):
+    tecnologia = Tecnologia.objects.get(pk=tecnologia_id)
+    form = TecnologiaForm(request.POST or None, instance=tecnologia)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:programacaowebtecnologias'))
+
+    context = {'form': form, 'tecnologia_id': tecnologia_id}
+
+    return render(request, 'portfolio/editatecnologia.html', context)
+
+
+@login_required
+def apaga_tecnologia_view(request, tecnologia_id):
+    Tecnologia.objects.get(pk=tecnologia_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:programacaowebtecnologias'))
+
+
+@login_required
+def nova_noticia_view(request):
+    form = TecnologiaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:noticias'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novanoticia.html', context)
+
+
+@login_required
+def edita_noticia_view(request, noticia_id):
+    noticia = Noticia.objects.get(pk=noticia_id)
+    form = NoticiaForm(request.POST or None, instance=noticia)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:noticias'))
+
+    context = {'form': form, 'noticia_id': noticia_id}
+
+    return render(request, 'portfolio/editanoticia.html', context)
+
+
+@login_required
+def apaga_noticia_view(request, noticia_id):
+    Tecnologia.objects.get(pk=noticia_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:noticias'))
+
+
+@login_required
+def novo_laboratorio_view(request):
+    form = LaboratorioForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:laboratorios'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novolaboratorio.html', context)
+
+
+@login_required
+def edita_laboratorio_view(request, laboratorio_id):
+    laboratorio = Laboratorio.objects.get(pk=laboratorio_id)
+    form = LaboratorioForm(request.POST or None, instance=laboratorio)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:laboratorios'))
+
+    context = {'form': form, 'laboratorio_id': laboratorio_id}
+
+    return render(request, 'portfolio/editalaboratorio.html', context)
+
+
+@login_required
+def apaga_laboratorio_view(request, laboratorio_id):
+    Laboratorio.objects.get(pk=laboratorio_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:laboratorios'))
+
+
+@login_required
+def novo_interesse_view(request):
+    form = InteresseForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:interessesehobbies'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novointeresse.html', context)
+
+
+@login_required
+def edita_interesse_view(request, interesse_id):
+    interesse = Laboratorio.objects.get(pk=interesse_id)
+    form = InteresseForm(request.POST or None, instance=interesse)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:interessesehobbies'))
+
+    context = {'form': form, 'interesse_id': interesse_id}
+
+    return render(request, 'portfolio/editainteresse.html', context)
+
+
+@login_required
+def apaga_interesse_view(request, interesse_id):
+    Interesse.objects.get(pk=interesse_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:interessesehobbies'))
+
+
+@login_required
+def nova_escola_view(request):
+    form = EscolaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:educacao'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novaescola.html', context)
+
+
+@login_required
+def edita_escola_view(request, escola_id):
+    escola = Escola.objects.get(pk=escola_id)
+    form = EscolaForm(request.POST or None, instance=escola)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:educacao'))
+
+    context = {'form': form, 'escola_id': escola_id}
+
+    return render(request, 'portfolio/editaescola.html', context)
+
+
+@login_required
+def apaga_escola_view(request, escola_id):
+    Escola.objects.get(pk=escola_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:educacao'))
+
+
+def novo_post_view(request):
+    form = BlogPostForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:blog'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novopost.html', context)
+
+
+def edita_post_view(request, post_id):
+    post = BlogPost.objects.get(pk=post_id)
+    form = BlogPostForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:blog'))
+
+    context = {'form': form, 'post_id': post_id}
+
+    return render(request, 'portfolio/editapost.html', context)
+
+
+def apaga_post_view(request, post_id):
+    Escola.objects.get(pk=post_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:blog'))
+
+
 def login_page_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -151,10 +399,18 @@ def login_page_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse('portfolio:lista'))
+            return HttpResponseRedirect(reverse('portfolio:home'))
         else:
             return render(request, 'portfolio/login.html', {
                 'message': 'Credenciais invalidas.'
             })
 
     return render(request, 'portfolio/login.html')
+
+
+def logout_page_view(request):
+    logout(request)
+
+    return render(request, 'portfolio/home.html', {
+        'message': 'Foi desconetado.'
+    })

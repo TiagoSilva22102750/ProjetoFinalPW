@@ -5,21 +5,32 @@
 {% block main %}
 
 {% load static %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/interessesehobbies.css' %}">
+<link rel="stylesheet" href="{% static 'portfolio/css/interessesehobbies.css' %}">
 
 <h1>Interesses e Hobbies</h1>
 
 <br>
 
 {% for interesse in interesses %}
-    <div class="container">
-        <div>
-            <h3>{{interesse.titulo}}</h3>
-            <br>
-            <p>{{interesse.descricao}}</p>
-            <br>
-            <p><b>Link:</b>  <a href= "{{interesse.link}}"> {{interesse.link}} </a></p>
-        </div>
+<div class="container">
+    <div>
+        <h3>{{interesse.titulo}}</h3>
+        <br>
+        <p>{{interesse.descricao}}</p>
+        <br>
+        <p><b>Link:</b> <a href="{{interesse.link}}"> {{interesse.link}} </a></p>
+        <br>
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:edita_interesse' interesse.id %}">Editar</a>
+        </button>
+        {% endif %}
     </div>
+</div>
 {% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:novo_interesse' %}">Adicionar Interesse</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}

@@ -3,6 +3,27 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-	<h3>Blog</h3>
-    <p>texto texto texto texto texto texto texto </p>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/blog.css' %}">
+
+<h1>Blog</h1>
+<br>
+{% for blog in blogs %}
+<div class="container">
+    <div>
+        <h3>{{blog.autor}}</h3>
+        <br>
+        <p>{{blog.titulo}}</p>
+        <br>
+        <p>{{blog.texto}}</p>
+        <br>
+        <button class="button button1"><a href="{% url 'portfolio:edita_post' post.id %}">Editar</a></button>
+    </div>
+</div>
+{% endfor %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:novo_post' %}">Adicionar Post</a>
+    </button>
+</div>
 {% endblock %}

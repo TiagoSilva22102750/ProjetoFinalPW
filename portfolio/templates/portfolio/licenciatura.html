@@ -38,10 +38,20 @@
 
         <p><b>Rating:</b> {{cadeira.rating}} &#127775;</p>
         <br>
-            <p><a href="{{cadeira.urlCadeira}}">
-                <button class="button button1">Saber mais</button>
-            </a></p>
+        <p><a href="{{cadeira.urlCadeira}}">
+            <button class="button button1">Saber mais</button>
+        </a></p>
+        <br>
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:licenciatura_edita_cadeira' cadeira.id %}">Editar</a></button>
+        {% endif %}
     </div>
 </div>
 {% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:licenciatura_nova_cadeira' %}">Adicionar cadeira</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}

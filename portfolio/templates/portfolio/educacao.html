@@ -28,6 +28,12 @@
     </tr>
     {% endfor %}
 </table>
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:nova_tecnologia' %}">Adicionar Escola</a>
+    </button>
+</div>
+{% endif %}
 
 <div class="florinda">
     <img src="{% static 'portfolio/images/florinda.png' %}">

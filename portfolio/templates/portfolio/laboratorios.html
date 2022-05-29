@@ -14,7 +14,17 @@
         <h3><a href= "{{laboratorio.link}}"> {{laboratorio.titulo}} </a></h3>
         <br>
         <p>{{laboratorio.descricao}}</p>
+        <br>
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:edita_laboratorio' laboratorio.id %}">Editar</a></button>
+        {% endif %}
     </div>
 </div>
 {% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:novo_laboratorio' %}">Adicionar Laboratorio</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}
