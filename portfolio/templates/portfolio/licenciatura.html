@@ -21,24 +21,26 @@
         <p><b>ECTS:</b> {{cadeira.ects}}</p>
 
         {% for professorTeorica in cadeira.professorTeoricas %}
-            <p><b>Docente Teórica:</b> {{professorTeorica}}</p>
+        <p><b>Docente Teórica:</b> {{professorTeorica}}</p>
         {% endfor %}
 
         {% for professorPratica in cadeira.professorPraticas %}
-            <p><b>Docente Prática:</b> {{professorPratica}}</p>
+        <p><b>Docente Prática:</b> {{professorPratica}}</p>
         {% endfor %}
 
         {% for linguagensUtilizadas in cadeira.linguagemUtilizada %}
-            <p><b>Linguagem Lecionada:</b> {{linguagensUtilizadas}}</p>
+        <p><b>Linguagem Lecionada:</b> {{linguagensUtilizadas}}</p>
         {% endfor %}
 
         {% for projeto in cadeira.projetoRealizado %}
-            <p><b>Projeto:</b> {{projeto}}</p>
+        <p><b>Projeto:</b> {{projeto}}</p>
         {% endfor %}
 
         <p><b>Rating:</b> {{cadeira.rating}} &#127775;</p>
         <br>
-        <p><b>Página da cadeira:</b> <a href= "{{cadeira.urlCadeira}}"> {{cadeira.urlCadeira}} </a></p>
+            <p><a href="{{cadeira.urlCadeira}}">
+                <button class="button button1">Saber mais</button>
+            </a></p>
     </div>
 </div>
 {% endfor %}

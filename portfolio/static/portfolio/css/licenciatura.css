@@ -27,3 +27,27 @@ table, th, td {
 .container a:hover {
   color: blue;
 }
+
+.button {
+  border:;
+  color: white;
+  padding: 7px 19px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #1d1d1f;
+}
+
+.button1:hover {
+  background-color: #1d1d1f;
+  color: white;
+}

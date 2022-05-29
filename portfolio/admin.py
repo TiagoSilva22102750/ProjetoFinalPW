@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from portfolio.models import Pessoa, Projeto, Cadeira, Linguagen, Escola, Interesse, Tecnologia, Laboratorio, Noticia, \
-    PontuacaoQuizz
+    PontuacaoQuizz, BlogPost
 
 
 class PessoaAdmin(admin.ModelAdmin):
@@ -75,3 +75,10 @@ class PontuacaoQuizzAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PontuacaoQuizz, PontuacaoQuizzAdmin)
+
+
+class BlogPostAdmin(admin.ModelAdmin):
+    fields = ("nome", "titulo", "descricao")
+
+
+admin.site.register(BlogPost, BlogPostAdmin)

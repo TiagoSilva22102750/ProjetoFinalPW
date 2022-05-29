@@ -113,3 +113,12 @@ class PontuacaoQuizz(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class BlogPost(models.Model):
+    autor = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=75)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.titulo
