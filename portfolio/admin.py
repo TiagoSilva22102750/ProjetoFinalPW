@@ -69,6 +69,7 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 admin.site.register(Noticia, NoticiaAdmin)
 
+
 class PontuacaoQuizzAdmin(admin.ModelAdmin):
     fields = ("nome", "pontuacao")
 

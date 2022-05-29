@@ -7,8 +7,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.urls import reverse
 
-from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
-    PontuacaoQuizz
+from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, PontuacaoQuizz, resolution_path
 
 
 def home_page_view(request):
@@ -142,7 +141,3 @@ def login_page_view(request):
             })
 
     return render(request, 'portfolio/login.html')
-
-
-def resolution_path(instance, filename):
-    return f'users/{instance.id}/'

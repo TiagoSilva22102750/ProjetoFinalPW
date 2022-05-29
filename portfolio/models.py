@@ -2,7 +2,9 @@ from django.db import models
 
 
 # Create your models here.
-from portfolio.views import resolution_path
+
+def resolution_path(instance, filename):
+    return f'users/{instance.id}'
 
 
 class Pessoa(models.Model):

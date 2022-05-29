@@ -23,3 +23,9 @@
 .container a:hover {
   color: blue;
 }
+
+.container img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
