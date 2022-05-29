@@ -32,7 +32,9 @@
             <p><b>Linguagem Lecionada:</b> {{linguagensUtilizadas}}</p>
         {% endfor %}
 
-            <p><b>Projeto:</b> {{cadeira.projetos}}</p>
+        {% for projeto in cadeira.projetoRealizado %}
+            <p><b>Projeto:</b> {{projeto}}</p>
+        {% endfor %}
 
         <p><b>Rating:</b> {{cadeira.rating}} &#127775;</p>
         <br>
