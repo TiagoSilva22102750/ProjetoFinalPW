@@ -2,6 +2,7 @@ from django.db import models
 
 
 # Create your models here.
+from portfolio.views import resolution_path
 
 
 class Pessoa(models.Model):
@@ -98,7 +99,15 @@ class Noticia(models.Model):
     titulo = models.CharField(max_length=100)
     texto = models.TextField()
     linkNoticia = models.URLField(default="", null=True, blank=True)
-
+    imagem = models.ImageField(upload_to=resolution_path, blank=True)
 
     def __str__(self):
         return self.titulo
+
+
+class PontuacaoQuizz(models.Model):
+    nome = models.CharField(max_length=50)
+    pontuacao = models.IntegerField()
+
+    def __str__(self):
+        return self.nome

@@ -7,7 +7,8 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.urls import reverse
 
-from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia
+from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
+    PontuacaoQuizz
 
 
 def home_page_view(request):
@@ -71,6 +72,30 @@ def exemplosetecnicas_page_view(request):
 
 
 def quizz_page_view(request):
+    if request.method == 'POST':
+        n = request.POST['nome']
+        p: int = 0
+
+        if (request.POST["linguagem"] == "css" and request.POST["linguagem"] == "html" and request.POST["linguagem"] == "javascript"):
+            p = p + 1
+
+        if (request.POST["opcao"] == "img"):
+            p = p + 1
+
+        if (request.POST["datecriacao"] == "21/07/2005"):
+            p = p + 1
+
+
+        if(request.POST["pagecolor"] == "rgb(255, 255, 255)"):
+            p = p + 1
+
+        if (request.POST["launchYear"] == "1993"):
+            p = p + 1
+
+        r = PontuacaoQuizz(nome=n, pontuacao=p)
+        r.save()
+        return render(request, 'portfolio/quizz.html')
+
     return render(request, 'portfolio/quizz.html')
 
 
@@ -119,4 +144,5 @@ def login_page_view(request):
     return render(request, 'portfolio/login.html')
 
 
-
+def resolution_path(instance, filename):
+    return f'users/{instance.id}/'

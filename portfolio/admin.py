@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from portfolio.models import Pessoa, Projeto, Cadeira, Linguagen, Escola, Interesse, Tecnologia, Laboratorio, Noticia
+from portfolio.models import Pessoa, Projeto, Cadeira, Linguagen, Escola, Interesse, Tecnologia, Laboratorio, Noticia, \
+    PontuacaoQuizz
 
 
 class PessoaAdmin(admin.ModelAdmin):
@@ -63,7 +64,13 @@ admin.site.register(Laboratorio, LaboratorioAdmin)
 
 
 class NoticiaAdmin(admin.ModelAdmin):
-    fields = ("titulo", "texto", "linkNoticia")
+    fields = ("titulo", "texto", "linkNoticia", "imagem")
 
 
 admin.site.register(Noticia, NoticiaAdmin)
+
+class PontuacaoQuizzAdmin(admin.ModelAdmin):
+    fields = ("nome", "pontuacao")
+
+
+admin.site.register(PontuacaoQuizz, PontuacaoQuizzAdmin)
