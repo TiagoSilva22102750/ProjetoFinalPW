@@ -1,0 +1,26 @@
+<!-- programacaowebtecnologias.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/programacaowebtecnologias.css' %}">
+
+<h1>Tecnologias Existentes</h1>
+<br>
+{% for tecnologia in tecnologias %}
+<div class="container">
+    <div>
+        <h3>{{tecnologia.nomeExtenso}} - {{tecnologia.sigla}}</h3>
+
+        <br>
+        <p>{{tecnologia.descricao}}</p>
+        <br>
+        <p><b>Criador(es): </b>{{tecnologia.criador}}</p>
+        <p><b>Ano de Criação: </b>{{tecnologia.anoDeCriacao}}</p>
+        <p><b>Link do Site Oficial: </b><a href="{{tecnologia.linkSiteOficial}}">{{tecnologia.linkSiteOficial}}</a></p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

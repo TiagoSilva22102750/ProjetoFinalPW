@@ -1,0 +1,20 @@
+<!-- programacaowebtecnologias.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/noticias.css' %}">
+
+<h1>Notícias</h1>
+<br>
+{% for noticia in noticias %}
+<div class="container">
+    <div>
+        <h3><a href="{{noticia.linkNoticia}}"> {{noticia.titulo}} </a></h3>
+        <br>
+        <p>{{noticia.texto}}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

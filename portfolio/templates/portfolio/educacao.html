@@ -1,0 +1,47 @@
+<!-- educacao.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/educacao.css' %}">
+
+<h1>Educação</h1>
+
+<br>
+
+<table>
+    <tr>
+        <th>Escola</th>
+        <th>Local</th>
+        <th>Curso Frequentado</th>
+        <th>Periodo na Instituição</th>
+    </tr>
+
+    {% for escola in escolas %}
+    <tr>
+        <td>{{escola.nome}}</td>
+        <td>{{escola.local}}</td>
+        <td>{{escola.cursoFrequentado}}</td>
+        <td>{{escola.periodoNaInstituicao}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="florinda">
+    <img src="{% static 'portfolio/images/florinda.png' %}">
+</div>
+
+<div class="alapraia">
+    <img src="{% static 'portfolio/images/alapraialogo.jpg' %}">
+</div>
+
+<div class="saojoao">
+    <img src="{% static 'portfolio/images/saojoao.png' %}">
+</div>
+
+<div class="ulht">
+    <img src="{% static 'portfolio/images/ulht.jpg' %}">
+</div>
+{% endblock %}

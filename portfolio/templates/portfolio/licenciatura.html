@@ -1,0 +1,43 @@
+<!-- licenciatura.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/licenciatura.css' %}">
+
+<h1>Cadeiras</h1>
+
+<br>
+
+{% for cadeira in cadeiras %}
+<div class="container">
+    <div>
+        <h3>{{cadeira.nome}} ({{cadeira.ano}}ºAno {{cadeira.semestre}}ºSemestre {{cadeira.anoLetivoFrequentado}})</h3>
+        <br>
+        <p>{{cadeira.descricao}}</p>
+        <br>
+        <p><b>ECTS:</b> {{cadeira.ects}}</p>
+
+        {% for professorTeorica in cadeira.professorTeoricas %}
+            <p><b>Docente Teórica:</b> {{professorTeorica}}</p>
+        {% endfor %}
+
+        {% for professorPratica in cadeira.professorPraticas %}
+            <p><b>Docente Prática:</b> {{professorPratica}}</p>
+        {% endfor %}
+
+        {% for linguagensUtilizadas in cadeira.linguagemUtilizada %}
+            <p><b>Linguagem Lecionada:</b> {{linguagensUtilizadas}}</p>
+        {% endfor %}
+
+            <p><b>Projeto:</b> {{cadeira.projetos}}</p>
+
+        <p><b>Rating:</b> {{cadeira.rating}} &#127775;</p>
+        <br>
+        <p><b>Página da cadeira:</b> <a href= "{{cadeira.urlCadeira}}"> {{cadeira.urlCadeira}} </a></p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

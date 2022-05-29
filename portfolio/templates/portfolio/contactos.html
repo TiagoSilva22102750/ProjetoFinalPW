@@ -1,0 +1,43 @@
+<!-- contactos.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/contactos.css' %}">
+
+<div class="contactos">
+
+    <div class="cascais">
+        <img src="{% static 'portfolio/images/framecascais.png' %}">
+    </div>
+
+    <p> Cascais </p>
+
+    <video autoplay muted loop id="myVideo">
+        <source src="{% static 'portfolio/images/cascais.mp4' %}" type="video/mp4">
+    </video>
+
+    <div class="flexbox">
+        <div class="github">
+            <a href="https://github.com/TiagoSilva22102750">
+                <img src="{% static 'portfolio/images/githublogo.png' %}">
+            </a>
+        </div>
+
+        <div class="facebook">
+            <a href="https://www.facebook.com/tmt.silva">
+                <img src="{% static 'portfolio/images/facebooklogo.png' %}">
+            </a>
+        </div>
+
+        <div class="instagram">
+            <a href="https://www.instagram.com/tiagotsilva15/">
+                <img src="{% static 'portfolio/images/instagramlogo.png' %}">
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

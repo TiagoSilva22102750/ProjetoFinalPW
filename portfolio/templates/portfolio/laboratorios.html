@@ -1,0 +1,20 @@
+<!-- laboratorios.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/laboratorios.css' %}">
+
+<h1>Laboratórios</h1>
+<br>
+{% for laboratorio in laboratorios %}
+<div class="container">
+    <div>
+        <h3><a href= "{{laboratorio.link}}"> {{laboratorio.titulo}} </a></h3>
+        <br>
+        <p>{{laboratorio.descricao}}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

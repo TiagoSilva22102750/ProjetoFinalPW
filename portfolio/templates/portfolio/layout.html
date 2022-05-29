@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/layout.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+</head>
+<body>
+<header>
+    <div>Tiago Silva</div>
+    <nav>
+        <a href="{% url 'portfolio:home' %}">Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Sobre mim</button>
+            <div class="dropdown-content">
+                <a href="{% url 'portfolio:licenciatura' %}">Licenciatura</a>
+                <a href="{% url 'portfolio:educacao' %}">Educação</a>
+                <a href="{% url 'portfolio:certificados' %}">Certificados</a>
+                <a href="{% url 'portfolio:outrashabilitacoes' %}">Outras Habilitações</a>
+                <a href="{% url 'portfolio:aptidoesecompetencias' %}">Aptidões e Competências Pessoais</a>
+                <a href="{% url 'portfolio:interessesehobbies' %}">Interesses e Hobbies</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Projetos</button>
+            <div class="dropdown-content">
+                <a href="{% url 'portfolio:projetos' %}">Realizados por mim</a>
+                <a href="{% url 'portfolio:tfcs' %}">TFCs Interessantes</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Programação Web</button>
+            <div class="dropdown-content">
+                <a href="{% url 'portfolio:programacaowebtecnologias' %}">Tecnologias Existentes</a>
+                <a href="{% url 'portfolio:sobreestewebsite' %}">Sobre este Website</a>
+                <a href="{% url 'portfolio:laboratorios' %}">Laboratórios</a>
+                <a href="{% url 'portfolio:noticias' %}">Notícias</a>
+                <a href="{% url 'portfolio:exemplosetecnicas' %}">Exemplos e Técnicas</a>
+                <a href="{% url 'portfolio:quizz' %}">Quizz</a>
+            </div>
+        </div>
+        <a href="{% url 'portfolio:blog' %}">Blog</a>
+        <a href="{% url 'portfolio:contactos' %}">Contactos</a>
+        <a href="{% url 'portfolio:login' %}">Log In</a>
+    </nav>
+</header>
+
+<main>
+    {% block main %}
+    {% load static %}
+    <img src="{% static 'portfolio/images/image.png' %}">
+    {% endblock main %}
+</main>
+
+<footer>
+    Tiago Silva, ULHT, 2022
+    <img src="{% static 'portfolio/images/lusofonalogo.jpg' %}">
+</footer>
+</html>

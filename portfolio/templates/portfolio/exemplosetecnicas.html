@@ -1,0 +1,24 @@
+<!-- exemplosetecnicas.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/exemplosetecnicas.css' %}">
+
+<div class="sites">
+    <h2>Sites Com Tendências Modernas</h2>
+    <br>
+    <p><a href="https://www.apple.com/">Apple</a></p>
+    <p><a href="https://www.spotify.com/mz-pt/">Spotify</a></p>
+    <p><a href="https://www.amazon.es/">Amazon</a></p>
+    <br>
+    <h2>Sites Maus</h2>
+    <br>
+    <p><a href="https://arngren.net/">Arngren</a></p>
+    <p><a href="http://www.pnwx.com/">Pacific Northwest X-Ray Inc</a></p>
+    <p><a href="http://www.gatesnfences.com/">Gates N Fences</a></p>
+</div>
+
+{% endblock %}

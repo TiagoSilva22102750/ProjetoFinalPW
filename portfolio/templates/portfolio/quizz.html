@@ -1,0 +1,64 @@
+<!-- quizz.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+<h1>Quizz</h1>
+<form method="POST" action="mailto: seuemail@gmail.com" enctype="multipart/form-data" autocomplete="on">
+    <br>
+    <p>Nome: <input type="text" name="nome" pattern=".{3,}" maxlength="15" autofocus required></p>
+    <br>
+    <p>Apelido: <input type="text" name="apelido" pattern=".{3,}" maxlength="15" required></p>
+
+    <br>
+
+    <h3>Perguntas</h3>
+    <br>
+    <p><b>Quais destas são linguagens frontend?</b></p>
+    <p><input type="checkbox" id="ling1" name="linguagem" value="java"> JAVA</p>
+    <p><input type="checkbox" id="ling2" name="linguagem" value="css"> CSS</p>
+    <p><input type="checkbox" id="ling3" name="linguagem" value="django"> Django</p>
+    <p><input type="checkbox" id="ling4" name="linguagem" value="html"> HTML</p>
+    <p><input type="checkbox" id="ling5" name="linguagem" value="javascript"> JavaScript</p>
+    <p><input type="checkbox" id="ling6" name="linguagem" value="kotlin"> Kotlin</p>
+    <p><input type="checkbox" id="ling7" name="linguagem" value="C#"> C#</p>
+    <p><input type="checkbox" id="ling8" name="linguagem" value="Python"> Python</p>
+
+    <br>
+
+    <p><b>Que tag em HTML se deve usar para inserção de uma imagem?</b></p>
+    <p><input type="radio" name="opcao" value="image"> image</p>
+    <p><input type="radio" name="opcao" value="png"> png</p>
+    <p><input type="radio" name="opcao" value="img"> img</p>
+    <p><input type="radio" name="opcao" value="src"> src</p>
+    <p><input type="radio" name="opcao" value="imagem"> imagem</p>
+
+    <br>
+
+    <p><b>Indique a data em que o Django foi oficialmente lançado?</b></p>
+    <p>Data de Criação/Lançamento do Django: <input type="date" id="date" name="datecriacao" min="2002-01-01"
+                                                    max="2007-01-01"></p>
+    <br>
+
+    <p><b>Se num ficheiro CSS colocar a seguinte instrução <i>background-color = #ffffff</i> com que cor ficará o
+        background da página?</b></p>
+    <label for="pagecolor">Selecione a cor correta:</label>
+    <input type="color" id="pagecolor" name="pagecolor" value="#000000">
+
+    <br>
+    <br>
+
+    <p><b>Em que ano foi lançado o HTML?</b></p>
+    <label for="launchYear">Ano de Lançamento (entre 1990 e 1995)</label>
+    <input type="number" id="launchYear" name="launchYear" min="1990" max="1995">
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="review">Comentários/Sugestões:</label>
+    <textarea id="review" name="review" rows="4" cols="50"></textarea>
+    <br>
+    <br>
+    <input type="submit" value="Submeter">
+</form>
+{% endblock %}

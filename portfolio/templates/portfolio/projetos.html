@@ -1,0 +1,34 @@
+<!-- projetos.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/projetos.css' %}">
+
+<h1>Projetos</h1>
+<br>
+{% for projeto in projetos %}
+<div class="container">
+    <div>
+        <h3>{{projeto.nome}}</h3>
+        <br>
+        <p>{{projeto.descricao}}</p>
+        <br>
+        <p><b>Ano de Realização: </b>{{projeto.anoLetivoEmQueFoiRealizado}}</p>
+
+        {% for participantes in projeto.autores %}
+            <p><b>Participantes: </b>{{participantes}}</p>
+        {% endfor %}
+
+        <p><b>Link do GitHub: </b><a href= "{{projeto.linkGitHub}}">{{projeto.linkGitHub}}</a></p>
+        <p><b>Vídeo de Demonstração: </b><a href= "{{projeto.linkVideoYoutube}}">{{projeto.linkVideoYoutube}}</a></p>
+
+        {% for linguagensUsadas in projeto.linguagemUsada %}
+            <p><b>Linguagem Utilizada:</b> {{linguagensUsadas}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

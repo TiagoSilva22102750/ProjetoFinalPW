@@ -1,0 +1,25 @@
+<!-- interessesehobbies.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/interessesehobbies.css' %}">
+
+<h1>Interesses e Hobbies</h1>
+
+<br>
+
+{% for interesse in interesses %}
+    <div class="container">
+        <div>
+            <h3>{{interesse.titulo}}</h3>
+            <br>
+            <p>{{interesse.descricao}}</p>
+            <br>
+            <p><b>Link:</b>  <a href= "{{interesse.link}}"> {{interesse.link}} </a></p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

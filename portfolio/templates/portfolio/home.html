@@ -1,0 +1,21 @@
+<!-- home.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/home.css' %}">
+
+<div class="container">
+    <img src="{% static 'portfolio/images/heroimage.jpg' %}">
+</div>
+
+<div class="flexbox">
+    <h2>Aspirante a Engenheiro Informático</h2>
+    <br>
+        <h3>
+            De momento estudante na Universidade Lusófona de Humanidades e Tecnologias<!--, o motivo que me levou a seguir esta área foi
+            principalmente o gosto pelos computadores e o crescimento exponencial da área nos últimos anos, o que tenho gostado mais de aprender é -->
+        </h3>
+</div>
+{% endblock %}
