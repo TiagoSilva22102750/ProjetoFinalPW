@@ -3,39 +3,45 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-<h1>Técnicas</h1>
-<br>
-<h3>Programar em:</h3>
-<br>
-<p>Kotlin;</p>
-<p>JAVA;</p>
-<p>Python;</p>
-<p>C;</p>
-<p>C++</p>
-<br>
-<p>Utilização do Word/Power Point;</p>
-<p>Criação de páginas Web e estilização das mesmas;</p>
-<p>Montagem e programação de Arduino.</p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/aptidoesecompetencias.css' %}">
 
+<h1>Aptidões e Competências</h1>
 <br>
+{% for aptidao in aptidoes %}
+<div class="container">
+    <div>
+        <h3>{{aptidao.titulo}}</h3>
+        <br>
+        <p>{{aptidao.descricaoCurta}}</p>
 
-<h1>Organizativas</h1>
-<br>
-<p>Tento sempre manter uma atitude positiva (tanto para com as tarefas dadas, como para com os meus colegas) e possuo capidade para trabalhar em equipa</p>
+        <br>
 
-<br>
+        {% if aptidao.projetoRealizado != None %}
+        {% for projetos in aptidao.projetoRealizado %}
+        <p><b>Projeto Realizado: </b>{{projetos}}</p>
+        {% endfor %}
+        {% endif %}
 
-<h1>Sociais</h1>
-<br>
-<p>Saber Ouvir;</p>
-<p>Empatia;</p>
-<p>Resolução de Conflitos;</p>
+        {% if aptidao.cadeiras != None %}
+        {% for disciplinas in aptidao.cadeiras %}
+        <p><b>Cadeira: </b>{{disciplinas}}</p>
+        {% endfor %}
+        {% endif %}
 
-<br>
+        <br>
 
-<h1>Linguisticas</h1>
-<br>
-<p>Inglês ( 1ºAno - 11ºAno);</p>
-<p>Espanhol (7ºAno - 9ºAno)</p>
-
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:edita_aptidao' aptidao.id %}">Editar</a>
+        </button>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:nova_aptidao' %}">Adicionar Aptidao/Competência</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}

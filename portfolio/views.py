@@ -12,9 +12,9 @@ from django.urls import reverse
 from matplotlib import pyplot as plt
 
 from portfolio.forms import CadeiraForm, ProjetoForm, TecnologiaForm, NoticiaForm, LaboratorioForm, InteresseForm, \
-    EscolaForm, BlogPostForm
+    EscolaForm, BlogPostForm, AptidoesECompetenciaForm
 from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
-    PontuacaoQuizz, resolution_path, BlogPost
+    PontuacaoQuizz, resolution_path, BlogPost, AptidoesECompetencia
 
 
 def home_page_view(request):
@@ -31,6 +31,16 @@ def licenciatura_page_view(request):
         elemento.__dict__["projetoRealizado"] = list(Projeto.objects.filter(projeto__id=elemento.id))
 
     return render(request, 'portfolio/licenciatura.html', {"cadeiras": elementos})
+
+
+def aptidoesecompetencias_page_view(request):
+    elementos = AptidoesECompetencia.objects.all()
+
+    for elemento in elementos:
+        elemento.__dict__["projetoRealizado"] = list(Projeto.objects.filter(projetos__id=elemento.id))
+        elemento.__dict__["cadeiras"] = list(Cadeira.objects.filter(disciplinas__id=elemento.id))
+
+    return render(request, 'portfolio/aptidoesecompetencias.html', {"aptidoes": elementos})
 
 
 def projetos_page_view(request):
@@ -130,10 +140,6 @@ def outrashabilitacoes_page_view(request):
     return render(request, 'portfolio/outrashabilitacoes.html')
 
 
-def aptidoesecompetencias_page_view(request):
-    return render(request, 'portfolio/aptidoesecompetencias.html')
-
-
 def interessesehobbies_page_view(request):
     return render(request, 'portfolio/interessesehobbies.html', {"interesses": Interesse.objects.all()})
 
@@ -171,6 +177,36 @@ def licenciatura_edita_cadeira_view(request, cadeira_id):
 def licenciatura_apaga_cadeira_view(request, cadeira_id):
     Cadeira.objects.get(pk=cadeira_id).delete()
     return HttpResponseRedirect(reverse('portfolio:licenciatura'))
+
+@login_required
+def nova_aptidao_view(request):
+    form = AptidoesECompetenciaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:aptidoes'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novaaptidao.html', context)
+
+
+@login_required
+def edita_aptidao_view(request, aptidao_id):
+    aptidao = AptidoesECompetencia.objects.get(pk=aptidao_id)
+    form = AptidoesECompetenciaForm(request.POST or None, instance=aptidao)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:aptidoes'))
+
+    context = {'form': form, 'aptidao_id': aptidao_id}
+
+    return render(request, 'portfolio/editaaptidao.html', context)
+
+
+@login_required
+def apaga_aptidao_view(request, aptidao_id):
+    AptidoesECompetencia.objects.get(pk=aptidao_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:aptidoes'))
 
 
 @login_required
@@ -237,7 +273,7 @@ def apaga_tecnologia_view(request, tecnologia_id):
 
 @login_required
 def nova_noticia_view(request):
-    form = TecnologiaForm(request.POST or None)
+    form = NoticiaForm(request.POST or None)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse('portfolio:noticias'))
@@ -262,7 +298,7 @@ def edita_noticia_view(request, noticia_id):
 
 @login_required
 def apaga_noticia_view(request, noticia_id):
-    Tecnologia.objects.get(pk=noticia_id).delete()
+    Noticia.objects.get(pk=noticia_id).delete()
     return HttpResponseRedirect(reverse('portfolio:noticias'))
 
 
@@ -311,7 +347,7 @@ def novo_interesse_view(request):
 
 @login_required
 def edita_interesse_view(request, interesse_id):
-    interesse = Laboratorio.objects.get(pk=interesse_id)
+    interesse = Interesse.objects.get(pk=interesse_id)
     form = InteresseForm(request.POST or None, instance=interesse)
     if form.is_valid():
         form.save()
@@ -383,7 +419,7 @@ def edita_post_view(request, post_id):
 
 
 def apaga_post_view(request, post_id):
-    Escola.objects.get(pk=post_id).delete()
+    BlogPost.objects.get(pk=post_id).delete()
     return HttpResponseRedirect(reverse('portfolio:blog'))
 
 

@@ -10,12 +10,16 @@
 <br>
 {% for noticia in noticias %}
 <div class="container">
-    <div>
+    <div class="caixa">
         <h3><a href="{{noticia.linkNoticia}}"> {{noticia.titulo}} </a></h3>
         <br>
         <p>{{noticia.texto}}</p>
-        <a href="{{noticia.linkNoticia}}"><img src="{{noticia.imagem.url}}" width="250" height="150"></a>
         <br>
+        <div class="imagem">
+            {% if noticia.imagem.url != None %}
+            <img src="{{noticia.imagem.url}}" width="250" height="150">
+            {% endif %}
+        </div>
         {% if request.user.is_authenticated %}
         <button class="button button1"><a href="{% url 'portfolio:edita_noticia' noticia.id %}">Editar</a></button>
         {% endif %}

@@ -1,7 +1,4 @@
 .container {
-}
-
-.container div {
   float: left;
   width: 430px;   height: 430px;
   padding: 25px;  margin: 10px;
@@ -9,6 +6,7 @@
   border-radius: 10px;                 /* arredonda os cantos */
   box-shadow: 5px 5px 15px grey;
 }
+
 
 .after-box {
   clear: left;
@@ -21,13 +19,7 @@
 }
 
 .container a:hover {
-  color: white;
-}
-
-.container img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  color: blue;
 }
 
 .button {
@@ -71,4 +63,10 @@
 .botao a {
   color: inherit;
   text-decoration: none !important;
+}
+
+.container img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

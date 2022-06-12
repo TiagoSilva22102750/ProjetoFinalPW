@@ -27,10 +27,9 @@ class Linguagen(models.Model):
 class Projeto(models.Model):
     nome = models.CharField(max_length=50)
     descricao = models.TextField(max_length=500)
-    # imagem = models.ImageField(default="", upload_to=None, height_field=None, width_field=None, max_length=100)
+    imagem = models.ImageField(upload_to=resolution_path, blank=True)
     linguagemUtilizada = models.ManyToManyField(Linguagen, related_name='linguagemUsada')
     anoLetivoEmQueFoiRealizado = models.CharField(default="2020/21", max_length=15, null=True, blank=True)
-    # cadeiraEmQueFoiRealizado = models.ManyToManyField(Cadeira)
     participantes = models.ManyToManyField(Pessoa, null=True, blank=True, related_name='participantes')
     linkGitHub = models.URLField(default="", null=True, blank=True)
     linkVideoYoutube = models.URLField(default="", null=True, blank=True)
@@ -57,6 +56,16 @@ class Cadeira(models.Model):
         return self.nome
 
 
+class AptidoesECompetencia(models.Model):
+    titulo = models.CharField(max_length=75)
+    descricaoCurta = models.TextField(max_length=250)
+    listaProjetos = models.ManyToManyField(Projeto, related_name='projetos', null=True, blank=True)
+    listaDisciplinas = models.ManyToManyField(Cadeira, related_name="disciplinas", null=True, blank=True)
+
+    def __str__(self):
+        return self.titulo
+
+
 class Escola(models.Model):
     nome = models.CharField(max_length=57)
     local = models.CharField(max_length=20)
@@ -70,6 +79,7 @@ class Escola(models.Model):
 class Interesse(models.Model):
     titulo = models.CharField(max_length=50)
     descricao = models.TextField()
+    imagem = models.ImageField(upload_to=resolution_path, blank=True)
     link = models.URLField(default="", null=True, blank=True)
 
     def __str__(self):
@@ -117,8 +127,11 @@ class PontuacaoQuizz(models.Model):
 
 class BlogPost(models.Model):
     autor = models.CharField(max_length=50)
+    data = models.DateField(default="2022-06-12")
     titulo = models.CharField(max_length=75)
     descricao = models.TextField()
+    urlProjetoOuPortfolio = models.URLField(default="", null=True, blank=True)
+    imagem = models.ImageField(upload_to=resolution_path, blank=True, null=True)
 
     def __str__(self):
         return self.titulo

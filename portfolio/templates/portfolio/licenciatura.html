@@ -28,13 +28,17 @@
         <p><b>Docente Prática:</b> {{professorPratica}}</p>
         {% endfor %}
 
+        {% if cadeira.linguagemUtilizada != None %}
         {% for linguagensUtilizadas in cadeira.linguagemUtilizada %}
         <p><b>Linguagem Lecionada:</b> {{linguagensUtilizadas}}</p>
         {% endfor %}
+        {% endif %}
 
+        {% if cadeira.projetoRealizado != None %}
         {% for projeto in cadeira.projetoRealizado %}
         <p><b>Projeto:</b> {{projeto}}</p>
         {% endfor %}
+        {% endif %}
 
         <p><b>Rating:</b> {{cadeira.rating}} &#127775;</p>
         <br>

@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from portfolio.models import Pessoa, Projeto, Cadeira, Linguagen, Escola, Interesse, Tecnologia, Laboratorio, Noticia, \
+from portfolio.models import Pessoa, Projeto, Cadeira, AptidoesECompetencia, Linguagen, Escola, Interesse, Tecnologia, \
+    Laboratorio, Noticia, \
     PontuacaoQuizz, BlogPost
 
 
@@ -20,8 +21,8 @@ admin.site.register(Linguagen, LinguagenAdmin)
 
 
 class ProjetoAdmin(admin.ModelAdmin):
-    fields = ("nome", "descricao", "linguagemUtilizada", "anoLetivoEmQueFoiRealizado", "participantes", "linkGitHub",
-              "linkVideoYoutube")
+    fields = ("nome", "descricao", "imagem", "linguagemUtilizada", "anoLetivoEmQueFoiRealizado", "participantes",
+              "linkGitHub", "linkVideoYoutube")
 
 
 admin.site.register(Projeto, ProjetoAdmin)
@@ -35,6 +36,13 @@ class CadeiraAdmin(admin.ModelAdmin):
 admin.site.register(Cadeira, CadeiraAdmin)
 
 
+class AptidoesECompetenciaAdmin(admin.ModelAdmin):
+    fields = ("titulo", "descricaoCurta", "listaProjetos", "listaDiciplinas")
+
+
+admin.site.register(AptidoesECompetencia, AptidoesECompetenciaAdmin)
+
+
 class EscolaAdmin(admin.ModelAdmin):
     fields = ("nome", "local", "cursoFrequentado", "periodoNaInstituicao", "imagem")
 
@@ -43,7 +51,7 @@ admin.site.register(Escola, EscolaAdmin)
 
 
 class InteresseAdmin(admin.ModelAdmin):
-    fields = ("titulo", "descricao", "link")
+    fields = ("titulo", "descricao", "imagem", "link")
 
 
 admin.site.register(Interesse, InteresseAdmin)
@@ -78,7 +86,7 @@ admin.site.register(PontuacaoQuizz, PontuacaoQuizzAdmin)
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    fields = ("nome", "titulo", "descricao")
+    fields = ("autor", "data", "titulo", "descricao", "urlProjetoOuPortfolio", "imagem")
 
 
 admin.site.register(BlogPost, BlogPostAdmin)
