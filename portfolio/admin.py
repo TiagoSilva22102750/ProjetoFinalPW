@@ -37,7 +37,7 @@ admin.site.register(Cadeira, CadeiraAdmin)
 
 
 class AptidoesECompetenciaAdmin(admin.ModelAdmin):
-    fields = ("titulo", "descricaoCurta", "listaProjetos", "listaDiciplinas")
+    fields = ("titulo", "descricaoCurta", "listaProjetos", "listaDisciplinas")
 
 
 admin.site.register(AptidoesECompetencia, AptidoesECompetenciaAdmin)

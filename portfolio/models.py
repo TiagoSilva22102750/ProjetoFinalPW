@@ -71,6 +71,7 @@ class Escola(models.Model):
     local = models.CharField(max_length=20)
     cursoFrequentado = models.CharField(max_length=31)
     periodoNaInstituicao = models.CharField(max_length=15)
+    imagem = models.ImageField(upload_to=resolution_path, blank=True)
 
     def __str__(self):
         return self.nome
