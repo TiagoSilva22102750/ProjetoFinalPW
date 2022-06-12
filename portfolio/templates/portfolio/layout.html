@@ -14,7 +14,7 @@
         fetch('https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1110600.json')// envia GET request ao URL
         .then(response => response.json()) // Põe a resposta no formato json
         .then(data => {
-            document.getElementById("temp").innerHTML ="Temperatura Lisboa " + data.data[0].tMin + " - " + data.data[0].tMax;
+            document.getElementById("temp").innerHTML ="Temperatura Lisboa " + data.data[0].tMin + "º - " + data.data[0].tMax + "º";
             console.log(data);
         }); // põe os dados na consola
       });
