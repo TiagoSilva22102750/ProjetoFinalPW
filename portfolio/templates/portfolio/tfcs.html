@@ -3,5 +3,51 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-	<h1>TFCS Interessantes</h1>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/tfcs.css' %}">
+
+<h1>TFCs Interessantes</h1>
+<br>
+{% for tfc in tfcs %}
+<div class="container">
+    <div>
+        <h3>{{tfc.titulo}} {{tfc.ano}}</h3>
+        <br>
+        <p>{{tfc.resumo}}</p>
+        <br>
+        <p><b>Autor(es): </b>{{tfc.autores}}</p>
+        <br>
+		<p><b>Orientador(es): </b>{{tfc.orientadores}}</p>
+        <br>
+		{% if tfc.urlRelatorio != None %}
+        <p><b>Relatório: </b><a href="{{tfc.urlRelatorio}}">Clique para transferir!</a></p>
+        {% endif %}
+        <br>
+        {% if tfc.urlGitHub != None %}
+        <p><b>Link do GitHub: </b><a href="{{tfc.urlGitHub}}">{{tfc.urlGitHub}}</a></p>
+        {% endif %}
+        <br>
+        {% if tfc.urlYouTube != None %}
+        <p><b>Vídeo de Demonstração: </b><a href="{{tfc.urlYouTube}}">Assista aqui!</a></p>
+        {% endif %}
+
+        <br>
+        {% if tfc.imagem.url != None %}
+        <img src="{{tfc.imagem.url}}" width="250" height="150">
+        {% endif %}
+        <br>
+        {% if request.user.is_authenticated %}
+        <button class="button button1"><a href="{% url 'portfolio:edita_tfc' tfc.id %}">Editar</a>
+        </button>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% if request.user.is_authenticated %}
+<div class=botao>
+    <button class="button button2"><a href="{% url 'portfolio:novo_tfc' %}">Adicionar TFC</a>
+    </button>
+</div>
+{% endif %}
 {% endblock %}

@@ -1,7 +1,8 @@
 from django.forms import ModelForm
 from django import forms
 
-from portfolio.models import Cadeira, Projeto, Tecnologia, Noticia, Laboratorio, Interesse, Escola, BlogPost, AptidoesECompetencia
+from portfolio.models import Cadeira, Projeto, Tecnologia, Noticia, Laboratorio, Interesse, Escola, BlogPost, \
+    AptidoesECompetencia, TFC
 
 
 class CadeiraForm(ModelForm):
@@ -73,4 +74,12 @@ class BlogPostForm(ModelForm):
 
     class Meta:
         model = BlogPost
+        fields = '__all__'
+
+
+class TFCForm(ModelForm):
+    descricao = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
+
+    class Meta:
+        model = TFC
         fields = '__all__'

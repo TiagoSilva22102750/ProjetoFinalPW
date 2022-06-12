@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from portfolio.models import Pessoa, Projeto, Cadeira, AptidoesECompetencia, Linguagen, Escola, Interesse, Tecnologia, \
     Laboratorio, Noticia, \
-    PontuacaoQuizz, BlogPost
+    PontuacaoQuizz, BlogPost, TFC
 
 
 class PessoaAdmin(admin.ModelAdmin):
@@ -90,3 +90,10 @@ class BlogPostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BlogPost, BlogPostAdmin)
+
+
+class TFCAdmin(admin.ModelAdmin):
+    fields = ("autores", "orientadores", "ano", "titulo", "resumo", "imagem", "urlRelatorio", "urlGitHub", "urlYouTube")
+
+
+admin.site.register(TFC, TFCAdmin)

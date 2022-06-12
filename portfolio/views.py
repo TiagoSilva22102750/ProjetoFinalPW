@@ -12,9 +12,9 @@ from django.urls import reverse
 from matplotlib import pyplot as plt
 
 from portfolio.forms import CadeiraForm, ProjetoForm, TecnologiaForm, NoticiaForm, LaboratorioForm, InteresseForm, \
-    EscolaForm, BlogPostForm, AptidoesECompetenciaForm
+    EscolaForm, BlogPostForm, AptidoesECompetenciaForm, TFCForm
 from portfolio.models import Cadeira, Projeto, Escola, Interesse, Pessoa, Linguagen, Tecnologia, Laboratorio, Noticia, \
-    PontuacaoQuizz, resolution_path, BlogPost, AptidoesECompetencia
+    PontuacaoQuizz, resolution_path, BlogPost, AptidoesECompetencia, TFC
 
 
 def home_page_view(request):
@@ -145,7 +145,9 @@ def interessesehobbies_page_view(request):
 
 
 def tfcs_page_view(request):
-    return render(request, 'portfolio/tfcs.html')
+    elementos = TFC.objects.all()
+
+    return render(request, 'portfolio/tfcs.html', {"tfcs": elementos})
 
 
 @login_required
@@ -421,6 +423,37 @@ def edita_post_view(request, post_id):
 def apaga_post_view(request, post_id):
     BlogPost.objects.get(pk=post_id).delete()
     return HttpResponseRedirect(reverse('portfolio:blog'))
+
+
+@login_required
+def novo_tfc_view(request):
+    form = TFCForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:tfcs'))
+
+    context = {'form': form}
+
+    return render(request, 'portfolio/novotfc.html', context)
+
+
+@login_required
+def edita_tfc_view(request, tfc_id):
+    tfc = TFC.objects.get(pk=tfc_id)
+    form = TFCForm(request.POST or None, instance=tfc)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:tfcs'))
+
+    context = {'form': form, 'tfc_id': tfc_id}
+
+    return render(request, 'portfolio/editatfc.html', context)
+
+
+@login_required
+def apaga_tfc_view(request, tfc_id):
+    TFC.objects.get(pk=tfc_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:tfcs'))
 
 
 def login_page_view(request):

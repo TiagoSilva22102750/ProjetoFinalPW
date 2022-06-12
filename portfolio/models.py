@@ -136,3 +136,17 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class TFC(models.Model):
+    autores = models.CharField(max_length=150)
+    orientadores = models.CharField(max_length=150)
+    ano = models.CharField(max_length=4)
+    titulo = models.CharField(max_length=75)
+    resumo = models.TextField()
+    imagem = models.ImageField(upload_to=resolution_path, blank=True, null=True)
+    urlRelatorio = models.URLField(default="", null=True, blank=True)
+    urlGitHub = models.URLField(default="", null=True, blank=True)
+    urlYouTube = models.URLField(default="", null=True, blank=True)
+
+    def __str__(self):
+        return self.titulo
