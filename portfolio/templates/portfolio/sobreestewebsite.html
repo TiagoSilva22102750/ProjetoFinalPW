@@ -3,6 +3,8 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-	<h3>Sobre este website</h3>
-    <p>texto texto texto texto texto texto texto </p>
+	<h1>Sobre este website</h1>
+
+    {% load static %}
+    <img src="{% static 'portfolio/images/mapadosite.png' %}">
 {% endblock %}
