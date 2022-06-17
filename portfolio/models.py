@@ -90,7 +90,7 @@ class Interesse(models.Model):
 class Tecnologia(models.Model):
     nomeExtenso = models.CharField(max_length=75)
     sigla = models.CharField(max_length=10)
-    tipo = models.CharField(max_length=31)
+    tipo = models.CharField(max_length=31, default="")
     anoDeCriacao = models.IntegerField()
     criador = models.CharField(max_length=115)
     linkSiteOficial = models.URLField(default="", null=True, blank=True)
