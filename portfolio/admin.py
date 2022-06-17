@@ -58,7 +58,7 @@ admin.site.register(Interesse, InteresseAdmin)
 
 
 class TecnologiaAdmin(admin.ModelAdmin):
-    fields = ("nomeExtenso", "sigla", "anoDeCriacao", "criador", "linkSiteOficial", "descricao", "imagem")
+    fields = ("nomeExtenso", "sigla", "tipo", "anoDeCriacao", "criador", "linkSiteOficial", "descricao", "imagem")
 
 
 admin.site.register(Tecnologia, TecnologiaAdmin)
