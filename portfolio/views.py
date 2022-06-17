@@ -9,7 +9,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 from django.urls import reverse
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 from portfolio.forms import CadeiraForm, ProjetoForm, TecnologiaForm, NoticiaForm, LaboratorioForm, InteresseForm, \
     EscolaForm, BlogPostForm, AptidoesECompetenciaForm, TFCForm
