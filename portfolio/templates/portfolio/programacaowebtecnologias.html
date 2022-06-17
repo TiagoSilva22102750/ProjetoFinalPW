@@ -12,11 +12,12 @@
 {% for tecnologia in tecnologias %}
 <div class="container">
     <div>
-        <h3>{{tecnologia.nomeExtenso}} - {{tecnologia.sigla}} - {{tecnologia.tipo}}</h3>
+        <h3>{{tecnologia.nomeExtenso}} - {{tecnologia.sigla}}</h3>
 
         <br>
         <p>{{tecnologia.descricao}}</p>
         <br>
+        <p><b>Tipo: </b>{{tecnologia.tipo}}</p>
         <p><b>Criador(es): </b>{{tecnologia.criador}}</p>
         <p><b>Ano de Criação: </b>{{tecnologia.anoDeCriacao}}</p>
 
