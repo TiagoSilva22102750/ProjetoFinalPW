@@ -17,7 +17,7 @@
         <br>
         <div class="imagem">
             {% if noticia.imagem.url != None %}
-            <img src="{{noticia.imagem.url}}" width="250" height="150">
+            <a href="{{noticia.linkNoticia}}"><img src="{{noticia.imagem.url}}" width="250" height="150"></a>
             {% endif %}
         </div>
         {% if request.user.is_authenticated %}
