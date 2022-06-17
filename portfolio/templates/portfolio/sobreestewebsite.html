@@ -3,8 +3,28 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-	<h1>Sobre este website</h1>
 
-    {% load static %}
-    <img src="{% static 'portfolio/images/mapadosite.png' %}">
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/sobreestewebsite.css' %}">
+
+<h1>Sobre este website</h1>
+
+<br>
+<br>
+
+<h2> Mapa do Site </h2>
+{% load static %}
+<img src="{% static 'portfolio/images/mapadosite.png' %}">
+
+<br>
+<br>
+<br>
+
+<h2> Diagrama Entidade Relação </h2>
+
+<br>
+<br>
+
+{% load static %}
+<img src="{% static 'portfolio/images/DiagramaDER.jpg' %}">
 {% endblock %}
