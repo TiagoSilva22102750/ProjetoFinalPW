@@ -32,9 +32,8 @@
         <p><b>Vídeo de Demonstração: </b><a href="{{tfc.urlYouTube}}">Assista aqui!</a></p>
         {% endif %}
 
-        <br>
         {% if tfc.imagem.url != None %}
-        <img src="{{tfc.imagem.url}}" width="250" height="150">
+        <img src="{{tfc.imagem.url}}" width="250" height="175">
         {% endif %}
         <br>
         {% if request.user.is_authenticated %}

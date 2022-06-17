@@ -1,9 +1,11 @@
 .container {
+  display: grid;
+  float: left;
 }
 
 .container div {
   float: left;
-  width: 400px;   height: 400px;
+  width: 400px;   height: 500px;
   padding: 25px;  margin: 10px;
   background-color: white;
   border-radius: 10px;                 /* arredonda os cantos */

@@ -3,6 +3,8 @@ table, th, td {
 }
 
 .container {
+  display: grid;
+  float: left;
 }
 
 .container div {

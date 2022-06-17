@@ -28,6 +28,7 @@
     </tr>
     {% endfor %}
 </table>
+
 {% if request.user.is_authenticated %}
 <div class=botao>
     <button class="button button2"><a href="{% url 'portfolio:nova_escola' %}">Adicionar Escola</a>
@@ -35,19 +36,21 @@
 </div>
 {% endif %}
 
-<div class="florinda">
-    <img src="{% static 'portfolio/images/florinda.png' %}">
-</div>
+<div class="flexbox">
+    <div class="florinda">
+        <img src="{% static 'portfolio/images/florinda.png' %}">
+    </div>
 
-<div class="alapraia">
-    <img src="{% static 'portfolio/images/alapraialogo.jpg' %}">
-</div>
+    <div class="alapraia">
+        <img src="{% static 'portfolio/images/alapraialogo.jpg' %}">
+    </div>
 
-<div class="saojoao">
-    <img src="{% static 'portfolio/images/saojoao.png' %}">
-</div>
+    <div class="saojoao">
+        <img src="{% static 'portfolio/images/saojoao.png' %}">
+    </div>
 
-<div class="ulht">
-    <img src="{% static 'portfolio/images/ulht.jpg' %}">
+    <div class="ulht">
+        <img src="{% static 'portfolio/images/ulht.jpg' %}">
+    </div>
 </div>
 {% endblock %}

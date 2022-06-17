@@ -94,6 +94,7 @@ class Tecnologia(models.Model):
     criador = models.CharField(max_length=115)
     linkSiteOficial = models.URLField(default="", null=True, blank=True)
     descricao = models.TextField()
+    imagem = models.ImageField(upload_to=resolution_path, blank=True, null=True)
 
     def __str__(self):
         return self.sigla

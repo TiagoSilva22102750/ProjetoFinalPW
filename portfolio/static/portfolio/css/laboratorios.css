@@ -1,4 +1,6 @@
 .container {
+  display: grid;
+  float: left;
 }
 
 .container div {
